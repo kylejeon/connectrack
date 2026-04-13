@@ -69,6 +69,16 @@ export default defineConfig({
   build: {
     sourcemap: true,
     outDir: 'out',
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'supabase-vendor': ['@supabase/supabase-js'],
+          'i18n-vendor': ['i18next', 'react-i18next'],
+        },
+      },
+    },
   },
   resolve: {
     alias: {
